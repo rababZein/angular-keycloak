@@ -50,6 +50,9 @@ export class UserService {
         "firstName": user.FirstName, 
         "lastName": user.LastName, 
         "credentials" : [{ "type" : "password", "value" : user.Password } ], 
+        "disableableCredentialTypes": [
+            "password"
+        ],
         "realmRoles": [ "user", "offline_access"  ], 
         "clientRoles": {"account": [ "manage-account" ] } 
         },{
