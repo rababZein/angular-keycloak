@@ -16,7 +16,7 @@ export class AuthInterceptor implements HttpInterceptor{
        // if (localStorage.getItem('userToken') != null) {
             //return next.handle(req.clone());
             console.log(window.location.href);
-            if (window.location.href !== 'http://localhost:4200/signup'){
+            if (window.location.href !== 'http://localhost:4200/signup' && window.location.href !== 'http://localhost:4200/login'){
                 const clonedreq = req.clone({
                     headers: req.headers.set("Authorization", "Bearer " + localStorage.getItem('userToken'))
                 });
@@ -29,20 +29,10 @@ export class AuthInterceptor implements HttpInterceptor{
                         }
                     );
             }else{
-                const clonedreq = req.clone({
-                  //  headers: req.headers.set("Authorization", "Bearer " + localStorage.getItem('userToken'))
-                });
-                return next.handle(clonedreq)
-                    .do(
-                        succ => { },
-                        err => {
-                            if (err.status === 401)
-                                this.router.navigateByUrl('/login');
-                        }
-                    );
+                return next.handle(req.clone()); 
             }
                  
-          //  } 
+           // } 
         // else {
         //    // this.router.navigate(['/login']);
         //    //window.location.href = '/login';
