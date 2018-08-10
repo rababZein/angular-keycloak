@@ -80,7 +80,18 @@ export class UserService {
     return this.http.post(this.rootUrl+'/realms/Demo-Realm/protocol/openid-connect/token',
     stringify(data),requestOptions );
   }
-
+  
+  getuserInfo(){
+    return this.http.post(this.rootUrl+"/realms/Demo-Realm/protocol/openid-connect/userinfo",{
+        "access_token": localStorage.getItem('userToken')
+    },{
+        headers: new HttpHeaders({
+           // "No-Auth" : "True",
+            "Content-Type" : "application/x-www-form-urlencoded"
+            
+        }) 
+    });  
+  }
 
 
 }

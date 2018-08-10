@@ -9,3 +9,22 @@
     </ul>
   </div>
 </nav>
+<div class="row">
+  <div class="col s12 m7">
+    <div class="card">
+      <div class="card-content" *ngIf="user">
+        <span>Username :{{user.preferred_username}}</span>
+        <br>
+        <span>Id : {{user.sub}}</span>
+        <br>
+        <span>Email : {{user.email}}</span>
+        <br>
+        <span>Full Name : {{user.name}} </span>
+        <br>
+        <span>First Name : {{user.given_name}}</span>
+        <br>
+        <span>Last Name : {{user.family_name}}</span>
+      </div>
+    </div>
+  </div>
+</div>

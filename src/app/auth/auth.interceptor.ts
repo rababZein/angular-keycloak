@@ -15,11 +15,12 @@ export class AuthInterceptor implements HttpInterceptor{
             return next.handle(req.clone());
        // if (localStorage.getItem('userToken') != null) {
             //return next.handle(req.clone());
-            console.log(window.location.href);
+            
             if (window.location.href !== 'http://localhost:4200/signup' && window.location.href !== 'http://localhost:4200/login'){
                 const clonedreq = req.clone({
                     headers: req.headers.set("Authorization", "Bearer " + localStorage.getItem('userToken'))
                 });
+                console.log(window.location.href);
                 return next.handle(clonedreq)
                     .do(
                         succ => { },
