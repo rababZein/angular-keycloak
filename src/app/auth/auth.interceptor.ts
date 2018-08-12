@@ -10,6 +10,7 @@ import { Router } from "@angular/router";
 
 export class AuthInterceptor implements HttpInterceptor{
     constructor(private router: Router){}
+    
     intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
         if (req.headers.get('No-Auth') == "True")  
             return next.handle(req.clone());
@@ -61,4 +62,5 @@ export class AuthInterceptor implements HttpInterceptor{
     //     //         this.router.navigateByUrl('/login');
     //     // }    
     // }
+    
 }

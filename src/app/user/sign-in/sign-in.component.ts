@@ -17,6 +17,9 @@ export class SignInComponent implements OnInit {
   }
 
   OnSubmit(userName,password){
+    localStorage.setItem('userName',userName);
+    console.log(localStorage.getItem('userName'));
+    localStorage.setItem('password',password);
     this.userService.userAuthentication(userName,password)
     .subscribe((data : any)=>{
       console.log(data);

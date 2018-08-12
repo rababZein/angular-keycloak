@@ -14,6 +14,7 @@ import { AuthGuard } from './auth/auth.guard';
 import { AuthInterceptor } from './auth/auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { AuthRefreshInterceptor } from './auth/auth.refresh.interceptor';
 
 
 @NgModule({
@@ -36,6 +37,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     {
       provide : HTTP_INTERCEPTORS,
       useClass : AuthInterceptor,
+      multi : true
+    },
+    {
+      provide : HTTP_INTERCEPTORS,
+      useClass : AuthRefreshInterceptor,
       multi : true
     }
   ],

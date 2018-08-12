@@ -12,7 +12,7 @@ import { User } from '../shared/user.model';
 export class HomeComponent implements OnInit {
  
   constructor(private userService : UserService, private router:Router, private http : HttpClient) { }
-   user:any;
+  user:any;
   ngOnInit() {
     this.userService.getuserInfo().subscribe(
       (data:any) => {
