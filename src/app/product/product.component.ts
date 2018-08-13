@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Product } from './Product';
 import * as $ from 'jquery';
 import 'datatables.net';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-product',
   templateUrl: './product.component.html',
@@ -11,7 +12,7 @@ import 'datatables.net';
 export class ProductComponent implements OnInit {
 
   characters: Product[];
-  constructor(private httpClient:HttpClient) { 
+  constructor(private httpClient:HttpClient,private router:Router) { 
     this.httpClient.get('http://localhost:8983/solr/delta13/dataimport?command=delta-import')
                     .subscribe()  ;
     this.httpClient.get('http://localhost:8983/solr/delta13/select?q=*:*')
@@ -39,5 +40,10 @@ export class ProductComponent implements OnInit {
 
    
    
+  }
+
+  Logout() {
+    localStorage.removeItem('userToken');
+    this.router.navigate(['/login']);
   }
 }
