@@ -16,8 +16,11 @@ export class AuthInterceptor implements HttpInterceptor{
             return next.handle(req.clone());
        // if (localStorage.getItem('userToken') != null) {
             //return next.handle(req.clone());
-            
-            if (window.location.href !== 'http://localhost:4200/signup' && window.location.href !== 'http://localhost:4200/login'){
+        if (req.url === 'http://localhost:8983/solr/delta13/select?q=*:*')
+            return next.handle(req.clone());
+        if (req.url === 'http://localhost:8983/solr/delta13/dataimport?command=delta-import')    
+            return next.handle(req.clone());
+        if (window.location.href !== 'http://localhost:4200/signup' && window.location.href !== 'http://localhost:4200/login'){
                 const clonedreq = req.clone({
                     headers: req.headers.set("Authorization", "Bearer " + localStorage.getItem('userToken'))
                 });

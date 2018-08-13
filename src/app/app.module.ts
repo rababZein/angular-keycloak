@@ -15,6 +15,7 @@ import { AuthInterceptor } from './auth/auth.interceptor';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AuthRefreshInterceptor } from './auth/auth.refresh.interceptor';
+import { ProductComponent } from './product/product.component';
 
 
 @NgModule({
@@ -23,7 +24,8 @@ import { AuthRefreshInterceptor } from './auth/auth.refresh.interceptor';
     UserComponent,
     HomeComponent,
     SignUpComponent,
-    SignInComponent
+    SignInComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
